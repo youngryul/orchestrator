@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Orchestrator</title>
+</head>
+<body>
+   <form method="post" action ="data.jsp">
+   <!-- name 입력 받기 -->
+   <p>Name : <input type="text" name ="name"/><br></p>
+   
+   <!-- 프로젝트명 입력 받기 -->
+   <p>Project : <input type="text" name = "project"/><br></p>
+   
+   <!-- 날짜 선택 입력값 받기 -->
+     <input type="radio" value="minutes" name="show"  checked="checked"/>Minutes
+     <input type="radio" value="hourly" name="show"/>Hourly
+     <input type="radio" value="daily" name="show"/>Daily
+     <input type="radio" value="weekly" name="show"/>Weekly
+     <input type="radio" value="monthly" name="show"/>Monthly
+    
+    <div id="min" style="display : block;">
+          <select name = "minute">
+          <option value = 1 selected="selected">1</option>
+          <option value = 5>5</option>
+          <option value =10>10</option>
+          <option value = 15>15</option>
+          <option value = 30>30</option>
+          </select>
+    </div>
+    
+    <div id="hour" style="display : none;">
+       <input type ="text" name="hour"/>hour(s)<br>
+       <input type ="text" name="min"/>minute(s)<br>
+    </div>
+    
+    <div id="daily" style="display : none;">
+        <input type ="text" name="hour_daily"/>hour(s)<br>
+        <input type ="text" name="min_daily"/>minute(s)<br>
+    </div>
+    
+    <div id="weekly" style="display :none;">
+       <p><input type="checkbox" name="week" value="MON"/>Monday
+       <input type="checkbox" name="week" value="TUE"/>Tuesday
+       <input type="checkbox" name="week" value="WED"/>Wednesday<br>
+       <input type="checkbox" name="week" value="THU"/>Thursday
+       <input type="checkbox" name="week" value="FRI"/>Friday
+       <input type="checkbox" name="week" value="SAT"/>Saturday
+       <input type="checkbox" name="week" value="SUN"/>Sunday<br></p>
+       
+       <p><input type="text" name="hour_weekly"/>hour(s)<br>
+       <input type="text" name="min_weekly"/>minute(s)<br></p>
+    </div>
+    
+    <div id="monthly" style="display: none;">
+       <p><input type="text" name="month"/>month(s)<br></p>
+        
+       <p><input type="checkbox" name="week_monthly" value="MON"/>Monday
+       <input type="checkbox" name="week_monthly" value="TUE"/>Tuesday
+       <input type="checkbox" name="week_monthly" value="WED"/>Wednesday<br>
+       <input type="checkbox" name="week_monthly" value="THU"/>Thursday
+       <input type="checkbox" name="week_monthly" value="FRI"/>Friday
+       <input type="checkbox" name="week_monthly" value="SAT"/>Saturday
+       <input type="checkbox" name="week_monthly" value="SUN"/>Sunday<br></p>
+       
+       <input type="text" name="hour_month"/>hour(s)<br>
+       <input type="text" name="min_month"/>minute(s)<br>
+       
+    </div>
+    
+      
+<script>
+   $('input[type=radio][name=show]').on("click",function(){
+	 
+	   var chkValue = $('input[type=radio][name=show]:checked').val();
+	   
+	   if(chkValue == 'minutes'){
+		   $('#min').css('display','block');
+		   $('#hour').css('display','none');
+		   $('#daily').css('display','none');
+		   $('#weekly').css('display','none');
+		   $('#monthly').css('display','none');
+		   
+	   }
+	   else if(chkValue == "hourly"){
+		   $('#min').css('display','none');
+		   $('#hour').css('display','block');
+		   $('#daily').css('display','none');
+		   $('#weekly').css('display','none');
+		   $('#monthly').css('display','none');
+	   }
+	   else if(chkValue == "daily"){
+		   $('#min').css('display','none');
+		   $('#hour').css('display','none');
+		   $('#daily').css('display','block');
+		   $('#weekly').css('display','none');
+		   $('#monthly').css('display','none');
+	   }
+	   else if(chkValue == "weekly"){
+		   $('#min').css('display','none');
+		   $('#hour').css('display','none');
+		   $('#daily').css('display','none');
+		   $('#weekly').css('display','block');
+		   $('#monthly').css('display','none');
+	   }
+	   else if(chkValue == "monthly"){
+		   $('#min').css('display','none');
+		   $('#hour').css('display','none');
+		   $('#daily').css('display','none');
+		   $('#weekly').css('display','none');
+		   $('#monthly').css('display','block');
+	   }
+	   
+   });
+   
+</script>
+
+
+     
+   <!-- 전송 버튼 -->
+   <input type="submit" value="전송"/>
+   </form>
+</body>
+</html>
